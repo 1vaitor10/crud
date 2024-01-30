@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\producto;
+use App\Models\usuario;
 use App\Http\Requests\StoreproductoRequest;
-use App\Http\Requests\UpdateproductoRequest;
+use App\Http\Requests\UpdateusuarioRequest;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Input;
@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
-class ProductoController extends Controller
+class usuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $productos = Producto::all();
-        return view('admin.productos.index', compact('productos')); 
+        $usuario = usuario::all();
+        return view('admin.usuario.index', compact('usuario')); 
     }
 
     /**
@@ -31,8 +31,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $productos = Producto::all();
-        return view('admin.productos.crear', compact('productos'));
+        $usuario = usuario::all();
+        return view('admin.usuario.crear', compact('usuario'));
     }
 
   
@@ -40,22 +40,22 @@ class ProductoController extends Controller
 public function store(StoreproductoRequest $request)
 {
     // Instancio al modelo Productos que hace llamado a la tabla 'productos' de la Base de Datos
-    $productos = new Producto; 
+    $usuario = new usuario; 
  
     // Recibo todos los datos del formulario de la vista 'crear.blade.php'
-    $productos->nombre = $request->nombre;
-    $productos->descripcion = $request->descripcion;
-    $productos->precio = $request->precio;
-    $productos->stock = $request->stock;
+    $usuario->nombre = $request->nombre;
+    $usuario->descripcion = $request->descripcion;
+    $usuario->precio = $request->precio;
+    $usuario->stock = $request->stock;
         
     // Almacenos la imagen en la carpeta publica especifica, esto lo veremos más adelante 
-    $productos->imagen = $request->file('img')->store('/');
+    $usuario->imagen = $request->file('img')->store('/');
  
     // Inserto todos los datos en mi tabla 'productos' 
-    $productos->save();
+    $usuario->save();
  
     // Hago una redirección a la vista principal con un mensaje 
-    return redirect('admin/productos')->with('message','Guardado Satisfactoriamente !'); 
+    return redirect('admin/usuario')->with('message','Guardado Satisfactoriamente !'); 
 }
 
     /**
@@ -63,8 +63,8 @@ public function store(StoreproductoRequest $request)
      */
     public function show($id)
     {
-        $producto = Producto::find($id);
-        return view('admin.productos.detalles', compact('producto'));
+        $usuario = usuario::find($id);
+        return view('admin.usuario.detalles', compact('usuario'));
     }
 
     /**
@@ -72,37 +72,37 @@ public function store(StoreproductoRequest $request)
      */
     public function edit($id)
     {
-        $producto = Producto::find($id);
-        return view('admin/productos.actualizar',['productos'=>$producto]);
+        $usuario = usuario::find($id);
+        return view('admin/usuario.actualizar',['usuario'=>$usuario]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateproductoRequest $request, $id)
+    public function update(UpdateusuarioRequest $request, $id)
     {
         // Recibo todos los datos desde el formulario Actualizar
-    $productos = Producto::find($id);
-    $productos->nombre = $request->nombre;
-    $productos->descripcion = $request->descripcion;
-    $productos->precio = $request->precio;
-    $productos->stock = $request->stock;
+    $usuario = usuario::find($id);
+    $usuario->nombre = $request->nombre;
+    $usuario->descripcion = $request->descripcion;
+    $usuario->precio = $request->precio;
+    $usuario->stock = $request->stock;
 
  
     // Recibo la imagen desde el formulario Actualizar
     if ($request->hasFile('imagen')) {
-        $productos->img = $request->file('imagen')->store('/');
+        $usuario->img = $request->file('imagen')->store('/');
     }
  
     // Guardamos la fecha de actualización del registro 
-    $productos->updated_at = (new DateTime)->getTimestamp(); 
+    $usuario->updated_at = (new DateTime)->getTimestamp(); 
         
     // Actualizo los datos en la tabla 'productos'
-    $productos->save();
+    $usuario->save();
  
     // Muestro un mensaje y redirecciono a la vista principal 
     Session::flash('message', 'Editado Satisfactoriamente !');
-    return Redirect::to('admin/productos'); //
+    return Redirect::to('admin/usuario'); //
     }
 
     /**
@@ -111,14 +111,14 @@ public function store(StoreproductoRequest $request)
     public function destroy($id)
     {
         // Indicamos el 'id' del registro que se va Eliminar
-        $productos = Producto::find($id);
+        $usuario = usuario::find($id);
      
         // Elimino la imagen de la carpeta 'uploads', esto lo veremos más adelante
-        $imagen = explode(",", $productos->img);
+        $imagen = explode(",", $usuario->img);
         Storage::delete($imagen);
             
         // Elimino el registro de la tabla 'productos' 
-        Producto::destroy($id); 
+        usuario::destroy($id); 
      
         // Opcional: Si deseas guardar la fecha de eliminación de un registro, debes mantenerlo en 
         // una tabla llamada por ejemplo 'productos_eliminados' y alli guardas su fecha de eliminación 
@@ -126,7 +126,7 @@ public function store(StoreproductoRequest $request)
             
         // Muestro un mensaje y redirecciono a la vista principal 
         Session::flash('message', 'Eliminado Satisfactoriamente !');
-        return Redirect::to('admin/productos');
+        return Redirect::to('admin/usuario');
 }
 
 }

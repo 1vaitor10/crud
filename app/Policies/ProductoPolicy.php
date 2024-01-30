@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\producto;
+use App\Models\usuario;
 use Illuminate\Auth\Access\Response;
 
 class ProductoPolicy
@@ -19,7 +19,7 @@ class ProductoPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, producto $producto): bool
+    public function view(User $user, usuario $producto): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class ProductoPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, producto $producto): bool
+    public function update(User $user, usuario $producto): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class ProductoPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, producto $producto): bool
+    public function delete(User $user, usuario $producto): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class ProductoPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, producto $producto): bool
+    public function restore(User $user, usuario $producto): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class ProductoPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, producto $producto): bool
+    public function forceDelete(User $user, usuario $producto): bool
     {
         //
     }
