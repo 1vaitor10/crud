@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class usuario extends Model
 {
     use HasFactory;
-    protected $table = 'productos';
+    protected $table = 'usuario';
     
     // Declaro los campos que usaré de la tabla 'productos' 
-    protected $fillable = ['nombre', 'descripcion', 'precio','stock', 'img']; 
+    protected $fillable = ['ID_USUARI', 'NOM', 'COGNOM','CONTRASENYA', 'RANG', 'CORREU']; 
 }
