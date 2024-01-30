@@ -43,10 +43,13 @@ public function store(StoreproductoRequest $request)
     $usuario = new usuario; 
  
     // Recibo todos los datos del formulario de la vista 'crear.blade.php'
-    $usuario->nombre = $request->nombre;
-    $usuario->descripcion = $request->descripcion;
-    $usuario->precio = $request->precio;
-    $usuario->stock = $request->stock;
+   
+    $usuario->ID_USUARI	 = $request->ID_USUARI;
+    $usuario->NOM = $request->NOM;
+    $usuario->COGNOM = $request->COGNOM;
+    $usuario->CONTRASENYA = $request->CONTRASENYA;
+    $usuario->RANG = $request->RANG;
+    $usuario->CORREU = $request->CORREU;
         
     // Almacenos la imagen en la carpeta publica especifica, esto lo veremos más adelante 
     $usuario->imagen = $request->file('img')->store('/');
@@ -61,33 +64,34 @@ public function store(StoreproductoRequest $request)
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($ID_USUARI)
     {
-        $usuario = usuario::find($id);
+        $usuario = usuario::find($ID_USUARI);
         return view('admin.usuario.detalles', compact('usuario'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit($ID_USUARI)
     {
-        $usuario = usuario::find($id);
+        $usuario = usuario::find($ID_USUARI);
         return view('admin/usuario.actualizar',['usuario'=>$usuario]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateusuarioRequest $request, $id)
+    public function update(UpdateusuarioRequest $request, $ID_USUARI)
     {
         // Recibo todos los datos desde el formulario Actualizar
-    $usuario = usuario::find($id);
-    $usuario->nombre = $request->nombre;
-    $usuario->descripcion = $request->descripcion;
-    $usuario->precio = $request->precio;
-    $usuario->stock = $request->stock;
-
+    $usuario = usuario::find($ID_USUARI);
+    $usuario->ID_USUARI	 = $request->ID_USUARI;
+    $usuario->NOM = $request->NOM;
+    $usuario->COGNOM = $request->COGNOM;
+    $usuario->CONTRASENYA = $request->CONTRASENYA;
+    $usuario->RANG = $request->RANG;
+    $usuario->CORREU = $request->CORREU;
  
     // Recibo la imagen desde el formulario Actualizar
     if ($request->hasFile('imagen')) {
@@ -108,17 +112,17 @@ public function store(StoreproductoRequest $request)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($ID_USUARI)
     {
         // Indicamos el 'id' del registro que se va Eliminar
-        $usuario = usuario::find($id);
+        $usuario = usuario::find($ID_USUARI);
      
         // Elimino la imagen de la carpeta 'uploads', esto lo veremos más adelante
         $imagen = explode(",", $usuario->img);
         Storage::delete($imagen);
             
         // Elimino el registro de la tabla 'productos' 
-        usuario::destroy($id); 
+        usuario::destroy($ID_USUARI); 
      
         // Opcional: Si deseas guardar la fecha de eliminación de un registro, debes mantenerlo en 
         // una tabla llamada por ejemplo 'productos_eliminados' y alli guardas su fecha de eliminación 
