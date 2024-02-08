@@ -48,6 +48,7 @@ public function store(StoreIncidenciaRequest $request)
     return redirect('admin/incidencies')->with('message','Guardado Satisfactoriamente !'); 
 
     }
+    
 
     /**
      * Display the specified resource.
