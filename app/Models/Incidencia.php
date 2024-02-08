@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class usuario extends Model
+class Incidencia extends Model
 {
     use HasFactory;
-    protected $table = 'usuario';
+
+    // Instancio la tabla 'productos' 
+    protected $table = 'incidencias';
     
     // Declaro los campos que usaré de la tabla 'productos' 
-    protected $fillable = ['ID_USUARI', 'NOM', 'COGNOM','CONTRASENYA', 'RANG', 'CORREU']; 
+    protected $fillable = ['nom', 'tipus', 'descripcio', 'foto']; 
+
 }

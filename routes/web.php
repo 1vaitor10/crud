@@ -29,21 +29,20 @@ Route::middleware('auth')->group(function () {
 });
 // Rutas CRUD
 /* Crear */
-Route::get('admin/productos/crear', 'App\Http\Controllers\ProductoController@create')->name('admin/productos/crear');
-Route::put('admin/productos/store', 'App\Http\Controllers\ProductoController@store')->name('admin/productos/store');
+Route::get('admin/incidencies/crear', 'App\Http\Controllers\IncidenciaController@crear')->name('admin/incidencies/crear');
+Route::put('admin/incidencies/store', 'App\Http\Controllers\IncidenciaController@store')->name('admin/incidencies/store');
  
 /* Leer */ 
-Route::get('admin/productos/show/{id}', 'App\Http\Controllers\ProductoController@show')->name('admin/productos/detalles'); 
+Route::get('admin/incidencies/show/{id}', 'App\Http\Controllers\IncidenciaController@show')->name('admin/incidencies/detalles'); 
  
 /* Actualizar */
-Route::get('admin/productos/actualizar/{id}', 'App\Http\Controllers\ProductoController@edit')->name('admin/productos/actualizar');
-Route::put('admin/productos/update/{id}', 'App\Http\Controllers\ProductoController@update')->name('admin/productos/update');
+Route::get('admin/incidencies/actualizar/{id}', 'App\Http\Controllers\IncidenciaController@actualizar')->name('admin/incidencies/actualizar');
+Route::put('admin/incidencies/update/{id}', 'App\Http\Controllers\IncidenciaController@update')->name('admin/incidencies/update');
  
 /* Eliminar */
-Route::put('admin/productos/eliminar/{id}', 'App\Http\Controllers\ProductoController@destroy')->name('admin/productos/eliminar'); 
+Route::put('admin/incidencies/eliminar/{id}', 'App\Http\Controllers\IncidenciaController@eliminar')->name('admin/incidencies/eliminar'); 
  
 /* Vista Principal */
-Route::get('admin/productos', 'App\Http\Controllers\ProductoController@index')->name('admin/productos');
- 
+Route::get('admin/incidencies', 'App\Http\Controllers\IncidenciaController@index')->name('admin/incidencies');
 
 require __DIR__.'/auth.php';

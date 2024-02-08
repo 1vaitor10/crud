@@ -1,10 +1,10 @@
 <?php
- 
+
 namespace App\Http\Requests;
- 
+
 use Illuminate\Foundation\Http\FormRequest;
- 
-class ItemCreateRequest extends FormRequest
+
+class StoreIncidenciaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class ItemCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|unique:productos|max:255',
-            'stock' => 'required',
-            'precio' => 'required',
+            'nom' => 'required|unique:productos|max:255',
+            'tipus' => 'required',
+            'descripcio' => 'required',
+            'foto' => 'required',
         ];
     }
 }
