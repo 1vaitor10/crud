@@ -12,7 +12,7 @@ class Incidencia extends Model
     // Instancio la tabla 'productos' 
     protected $table = 'incidencias';
     
-    // Declaro los campos que usaré de la tabla 'productos' 
+    // Declaro los campos que usaré de la tabla 'Incidencia' 
     protected $fillable = ['nom', 'tipus', 'descripcio', 'foto']; 
 
 }

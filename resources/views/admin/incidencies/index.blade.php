@@ -21,11 +21,11 @@
       </td>
       <td </td>
       <td class="v-align-middle">
-        <form action="{{ route('admin/incidencies/eliminar',$ins->id_incidencia) }}" method="POST" class="form-horizontal" role="form" onsubmit="return confirmarEliminar()">
+        <form action="{{ route('admin/incidencies/eliminar',$ins->id) }}" method="POST" class="form-horizontal" role="form" onsubmit="return confirmarEliminar()">
           <input type="hidden" name="_method" value="PUT">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <a href="{{ route('admin/incidencies/detalles',$ins->id_incidencia) }}" class="btn btn-dark">Detalles</a>
-          <a href="{{ route('admin/incidencies/actualizar',$ins->id_incidencia) }}" class="btn btn-primary">Editar</a>
+          <a href="{{ route('admin/incidencies/detalles',$ins->id) }}" class="btn btn-dark">Detalles</a>
+          <a href="{{ route('admin/incidencies/actualizar',$ins->id) }}" class="btn btn-primary">Editar</a>
           <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
       </td>

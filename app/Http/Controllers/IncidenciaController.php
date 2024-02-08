@@ -52,23 +52,23 @@ public function store(StoreIncidenciaRequest $request)
     /**
      * Display the specified resource.
      */
-    public function show($id_incidencia)
+    public function show($id)
     {
-        $incidencies = Incidencia::find($id_incidencia);
-        return view('admin.incidencies.detalles', compact('incidencies'));    
+        $incidencies = Incidencia::find($id);
+        return view('admin/incidencies/detalles', compact('incidencies'));    
     }
-    public function actualizar($id_incidencia)
+    public function actualizar($id)
     {
-        $incidencies = Incidencia::find($id_incidencia);
+        $incidencies = Incidencia::find($id);
         return view('admin/incidencies.actualizar',['incidencies'=>$incidencies]);
     } 
 
     
     // Proceso de Actualización de un Registro (Update)
-    public function update(UpdateIncidenciaRequest $request, $id_incidencia)
+    public function update(UpdateIncidenciaRequest $request, $id)
     {        
         // Recibo todos los datos desde el formulario Actualizar
-        $incidencies = Incidencia::find($id_incidencia);
+        $incidencies = Incidencia::find($id);
         $incidencies->nom = $request->nom;
         $incidencies->tipus = $request->tipus;
         $incidencies->descripcio = $request->descripcio;
@@ -83,13 +83,13 @@ public function store(StoreIncidenciaRequest $request)
     }
 
     // Eliminar un Registro 
-    public function eliminar($id_incidencia)
+    public function eliminar($id)
     {
         // Indicamos el 'id' del registro que se va Eliminar
-        $incidencies = Incidencia::find($id_incidencia);
+        $incidencies = Incidencia::find($id);
 
         // Elimino el registro de la tabla 'productos' 
-        Incidencia::destroy($id_incidencia); 
+        Incidencia::destroy($id); 
 
         // Opcional: Si deseas guardar la fecha de eliminación de un registro, debes mantenerlo en 
         // una tabla llamada por ejemplo 'productos_eliminados' y alli guardas su fecha de eliminación 
