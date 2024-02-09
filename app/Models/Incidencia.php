@@ -13,6 +13,6 @@ class Incidencia extends Model
     protected $table = 'incidencias';
     
     // Declaro los campos que usaré de la tabla 'Incidencia' 
-    protected $fillable = ['nom', 'tipus', 'descripcio', 'foto']; 
+    protected $fillable = ['nom', 'tipus','descripcio', 'img']; 
 
 }

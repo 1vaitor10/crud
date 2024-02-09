@@ -74,13 +74,12 @@
 						</div>
 					</div>
  
-					<div class="mb-3">
-						<label for="fot" class="negrita">Selecciona una foto:</label>
-						<div>
-							<input name="foto" type="file" id="fot"> 
-						</div>
-					</div>
- 
+					<div class="mb3">
+                          <label for="img" class="negrita">Selecciona una imagen:</label>
+                          <div>
+                              <input name="img" type="file" id="imgen">
+                          </div>
+                      </div>
  
 				@endif
  

@@ -6,9 +6,8 @@
       <th>nom</th>
       <th>tipus</th>
       <th>descripcio</th>
-      <th>RANG</th>
       <th>Foto</th>
-      <th>Acciones</th>
+     
     </tr>
   </thead>
   <tbody> 
@@ -17,7 +16,7 @@
       <td class="v-align-middle">{{$ins->tipus}}</td>
       <td class="v-align-middle">{{$ins->descripcio}}</td>
       <td class="v-align-middle">
-        <foto src="{!! asset(" uploads/$ins->foto") !!}" width="30" class="foto-responsive">
+        <foto src="{!! asset(" uploads/$ins->imagen") !!}" width="30" class="imagen-responsive">
       </td>
       <td </td>
       <td class="v-align-middle">

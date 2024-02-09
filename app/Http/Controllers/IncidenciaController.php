@@ -40,12 +40,13 @@ public function store(StoreIncidenciaRequest $request)
         $incidencies->nom = $request->nom;
         $incidencies->tipus = $request->tipus;
         $incidencies->descripcio = $request->descripcio;
-        $incidencies->fot = $request->file('fot')->store('/');
-    // Inserto todos los datos en mi tabla 'productos' 
-    $incidencies->save();
+        $incidencies->imagen = $request->file('img')->store('/');
  
-    // Hago una redirección a la vista principal con un mensaje 
-    return redirect('admin/incidencies')->with('message','Guardado Satisfactoriamente !'); 
+        // Inserto todos los datos en mi tabla 'incidencies' 
+        $incidencies->save();
+     
+        // Hago una redirección a la vista principal con un mensaje 
+        return redirect('admin/incidencies')->with('message','Guardado Satisfactoriamente !');
 
     }
     
@@ -56,8 +57,10 @@ public function store(StoreIncidenciaRequest $request)
     public function show($id)
     {
         $incidencies = Incidencia::find($id);
-        return view('admin/incidencies/detalles', compact('incidencies'));    
+        return view('admin.incidencies.detalles', compact('incidencies'));
     }
+
+
     public function actualizar($id)
     {
         $incidencies = Incidencia::find($id);
@@ -74,14 +77,20 @@ public function store(StoreIncidenciaRequest $request)
         $incidencies->tipus = $request->tipus;
         $incidencies->descripcio = $request->descripcio;
 
-        $incidencies->fot = $request->file('fot')->store('/');
+        if ($request->hasFile('imagen')) {
+            $incidencies->img = $request->file('imagen')->store('/');
+        }
+     
+        // Guardamos la fecha de actualización del registro 
+        $incidencies->updated_at = (new DateTime)->getTimestamp(); 
+            
         // Actualizo los datos en la tabla 'productos'
         $incidencies->save();
-
+     
         // Muestro un mensaje y redirecciono a la vista principal 
         Session::flash('message', 'Editado Satisfactoriamente !');
-        return Redirect::to('admin/incidencies');
-    }
+        return Redirect::to('admin/incidencies'); //
+        }
 
     // Eliminar un Registro 
     public function eliminar($id)

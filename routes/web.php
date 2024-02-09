@@ -33,7 +33,7 @@ Route::get('admin/incidencies/crear', 'App\Http\Controllers\IncidenciaController
 Route::put('admin/incidencies/store', 'App\Http\Controllers\IncidenciaController@store')->name('admin/incidencies/store');
  
 /* Leer */ 
-Route::get('admin/incidencies/show/{id}', 'App\Http\Controllers\IncidenciaController@show')->name('admin/incidencies/show'); 
+Route::get('admin/incidencies/detalles/{id}', 'App\Http\Controllers\IncidenciaController@show')->name('admin/incidencies/detalles'); 
  
 /* Actualizar */
 Route::get('admin/incidencies/actualizar/{id}', 'App\Http\Controllers\IncidenciaController@actualizar')->name('admin/incidencies/actualizar');
