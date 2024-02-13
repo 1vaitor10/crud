@@ -75,9 +75,9 @@
 					</div>
  
 					<div class="mb3">
-                          <label for="img" class="negrita">Selecciona una imagen:</label>
+                          <label for="foto" class="negrita">Selecciona una imagen:</label>
                           <div>
-                              <input name="img" type="file" id="imgen">
+                              <input name="foto" type="file" id="foto">
                           </div>
                       </div>
  

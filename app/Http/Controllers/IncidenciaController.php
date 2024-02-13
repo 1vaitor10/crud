@@ -22,34 +22,33 @@ class IncidenciaController extends Controller
     public function index()
     {
         $incidencies = Incidencia::all();
-        return view('admin.incidencies.index', compact('incidencies')); 
+        return view('admin.incidencies.index', compact('incidencies'));
     }
     // Crear un Registro (Create) 
-public function crear()
-{
-    $incidencies = Incidencia::all();
-    return view('admin.incidencies.crear', compact('incidencies'));
-}
-
-public function store(StoreIncidenciaRequest $request)
+    public function crear()
     {
-        // Instancio al modelo Productos que hace llamado a la tabla 'productos' de la Base de Datos
-    $incidencies = new Incidencia; 
- 
-    // Recibo todos los datos del formulario de la vista 'crear.blade.php'
+        $incidencies = Incidencia::all();
+        return view('admin.incidencies.crear', compact('incidencies'));
+    }
+
+    public function store(StoreIncidenciaRequest $request)
+    {
+        // Instancio al modelo Incidencia que hace llamado a la tabla 'productos' de la Base de Datos
+        $incidencies = new Incidencia;
+
+        // Recibo todos los datos del formulario de la vista 'crear.blade.php'
         $incidencies->nom = $request->nom;
         $incidencies->tipus = $request->tipus;
         $incidencies->descripcio = $request->descripcio;
-        $incidencies->imagen = $request->file('img')->store('/');
- 
+        $incidencies->foto = $request->file('foto')->store('/');
+
         // Inserto todos los datos en mi tabla 'incidencies' 
         $incidencies->save();
-     
-        // Hago una redirección a la vista principal con un mensaje 
-        return redirect('admin/incidencies')->with('message','Guardado Satisfactoriamente !');
 
+        // Hago una redirección a la vista principal con un mensaje 
+        return redirect('admin/incidencies')->with('message', 'Guardado Satisfactoriamente !');
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -64,13 +63,13 @@ public function store(StoreIncidenciaRequest $request)
     public function actualizar($id)
     {
         $incidencies = Incidencia::find($id);
-        return view('admin/incidencies.actualizar',['incidencies'=>$incidencies]);
-    } 
+        return view('admin/incidencies.actualizar', ['incidencies' => $incidencies]);
+    }
 
-    
+
     // Proceso de Actualización de un Registro (Update)
     public function update(UpdateIncidenciaRequest $request, $id)
-    {        
+    {
         // Recibo todos los datos desde el formulario Actualizar
         $incidencies = Incidencia::find($id);
         $incidencies->nom = $request->nom;
@@ -80,17 +79,17 @@ public function store(StoreIncidenciaRequest $request)
         if ($request->hasFile('imagen')) {
             $incidencies->img = $request->file('imagen')->store('/');
         }
-     
+
         // Guardamos la fecha de actualización del registro 
-        $incidencies->updated_at = (new DateTime)->getTimestamp(); 
-            
+        $incidencies->updated_at = (new DateTime)->getTimestamp();
+
         // Actualizo los datos en la tabla 'productos'
         $incidencies->save();
-     
+
         // Muestro un mensaje y redirecciono a la vista principal 
         Session::flash('message', 'Editado Satisfactoriamente !');
         return Redirect::to('admin/incidencies'); //
-        }
+    }
 
     // Eliminar un Registro 
     public function eliminar($id)
@@ -99,15 +98,14 @@ public function store(StoreIncidenciaRequest $request)
         $incidencies = Incidencia::find($id);
 
         // Elimino el registro de la tabla 'productos' 
-        Incidencia::destroy($id); 
+        Incidencia::destroy($id);
 
         // Opcional: Si deseas guardar la fecha de eliminación de un registro, debes mantenerlo en 
         // una tabla llamada por ejemplo 'productos_eliminados' y alli guardas su fecha de eliminación 
         // $productos->deleted_at = (new DateTime)->getTimestamp();
-            
+
         // Muestro un mensaje y redirecciono a la vista principal 
         Session::flash('message', 'Eliminado Satisfactoriamente !');
         return Redirect::to('admin/incidencies');
-    } 
-
-} 
+    }
+}
