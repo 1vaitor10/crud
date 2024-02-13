@@ -24,7 +24,7 @@ class StoreIncidenciaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required|unique:productos|max:255',
+            'nom' => 'required',
             'tipus' => 'required',
             'descripcio' => 'required',
             'foto' => 'required',
