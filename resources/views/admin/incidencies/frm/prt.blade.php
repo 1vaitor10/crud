@@ -8,21 +8,21 @@
 					<div class="mb-3">
 						<label for="nom" class="negrita">nombre:</label> 
 						<div>
-							<input class="form-control" placeholder="Zapatos Marrones de Cuero" required="required" name="nom" type="text" id="nom" value="{{ $incidencies->nom }}"> 
+							<input class="form-control" placeholder="" required="required" name="nom" type="text" id="nom" value="{{ $incidencies->nom }}"> 
 						</div>
 					</div>
 
                     <div class="mb-3">
 						<label for="tipus" class="negrita">tipus:</label> 
 						<div>
-							<input class="form-control" placeholder="Zapatos Marrones de Cuero" required="required" name="tipus" type="text" id="tipus" value="{{ $incidencies->tipus }}"> 
+							<input class="form-control" placeholder="" required="required" name="tipus" type="text" id="tipus" value="{{ $incidencies->tipus }}"> 
 						</div>
 					</div>
  
 					<div class="mb-3">
 						<label for="descripcio" class="negrita">descripcio:</label> 
 						<div>
-							<input class="form-control" placeholder="4.50" required="required" name="descripcio" type="text" id="descripcio" value="{{ $incidencies->descripcio }}"> 
+							<input class="form-control" placeholder="" required="required" name="descripcio" type="text" id="descripcio" value="{{ $incidencies->descripcio }}"> 
 						</div>
 					</div>
  
@@ -56,21 +56,21 @@
                     <div class="mb-3">
 						<label for="nom" class="negrita">nombre:</label> 
 						<div>
-							<input class="form-control" placeholder="Zapatos Marrones de Cuero" required="required" name="nom" type="text" id="nom"> 
+							<input class="form-control" placeholder="" required="required" name="nom" type="text" id="nom"> 
 						</div>
 					</div>
 
                     <div class="mb-3">
 						<label for="tipus" class="negrita">tipus:</label> 
 						<div>
-							<input class="form-control" placeholder="Zapatos Marrones de Cuero" required="required" name="tipus" type="text" id="tipus"> 
+							<input class="form-control" placeholder="" required="required" name="tipus" type="text" id="tipus"> 
 						</div>
 					</div>
  
 					<div class="mb-3">
 						<label for="descripcio" class="negrita">descripcio:</label> 
 						<div>
-							<input class="form-control" placeholder="4.50" required="required" name="descripcio" type="text" id="descripcio"> 
+							<input class="form-control" placeholder="" required="required" name="descripcio" type="text" id="descripcio"> 
 						</div>
 					</div>
  

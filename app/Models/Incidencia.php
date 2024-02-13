@@ -9,7 +9,7 @@ class Incidencia extends Model
 {
     use HasFactory;
 
-    // Instancio la tabla 'productos' 
+    // Instancio la tabla 'incidencies' 
     protected $table = 'incidencias';
     
     // Declaro los campos que usaré de la tabla 'Incidencia' 
