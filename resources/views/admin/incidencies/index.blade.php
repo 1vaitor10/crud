@@ -3,6 +3,7 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
+    <a href="{{ route('admin/incidencies/crear') }}" class="btn btn-primary">crear</a>
       <th>nom</th>
       <th>tipus</th>
       <th>descripcio</th>
@@ -28,7 +29,7 @@
           <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
       </td>
-      <a href="{{ route('admin/incidencies/crear') }}" class="btn btn-primary">crear</a>
+    
     </tr> 
     @endforeach 
     <script type="text/javascript">
