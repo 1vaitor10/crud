@@ -57,6 +57,7 @@
             </table>
         </div>
 
+        
         <script type="text/javascript">
             function confirmarEliminar() {
                 return confirm("¿Estás seguro de eliminar?");
