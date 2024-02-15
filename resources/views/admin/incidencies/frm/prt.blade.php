@@ -3,7 +3,7 @@
 		<section class="panel"> 
 			<div class="panel-body">
  
-				@if ( !empty ( $incidencies->id_incidencia ) )
+				@if ( !empty ( $incidencies->id ) )
  
 					<div class="mb-3">
 						<label for="nom" class="negrita">nombre:</label> 
