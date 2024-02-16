@@ -40,7 +40,7 @@ Route::get('admin/incidencies/actualizar/{id}', 'App\Http\Controllers\Incidencia
 Route::put('admin/incidencies/update/{id}', 'App\Http\Controllers\IncidenciaController@update')->name('admin/incidencies/update');
  
 /* Eliminar */
-Route::put('admin/incidencies/eliminar/{id}', 'App\Http\Controllers\IncidenciaController@eliminar')->name('admin/incidencies/eliminar'); 
+Route::post('admin/incidencies/eliminar/{id}', 'App\Http\Controllers\IncidenciaController@eliminar')->name('admin/incidencies/eliminar'); 
  
 /* Vista Principal */
 Route::get('admin/incidencies', 'App\Http\Controllers\IncidenciaController@index')->name('admin/incidencies');

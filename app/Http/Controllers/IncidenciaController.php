@@ -76,8 +76,8 @@ class IncidenciaController extends Controller
         $incidencies->tipus = $request->tipus;
         $incidencies->descripcio = $request->descripcio;
 
-        if ($request->hasFile('imagen')) {
-            $incidencies->img = $request->file('imagen')->store('/');
+        if ($request->hasFile('foto')) {
+            $incidencies->img = $request->file('foto')->store('/');
         }
 
         // Guardamos la fecha de actualización del registro 
