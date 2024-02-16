@@ -36,7 +36,7 @@
                         <td class="v-align-middle">{{$ins->tipus}}</td>
                         <td class="v-align-middle">{{$ins->descripcio}}</td>
                         <td class="v-align-middle">
-                            <img src="{{ asset("uploads/$ins->imagen") }}" width="30" class="img-responsive" alt="Foto">
+                            <img src="{{ asset("uploads/$ins->foto") }}" width="30" class="img-responsive" alt="Foto">
                         </td>
                         <td class="v-align-middle">
                             <form action="{{ route('admin/incidencies/eliminar', $ins->id) }}" method="POST"

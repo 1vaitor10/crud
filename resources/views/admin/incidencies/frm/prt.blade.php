@@ -29,7 +29,7 @@
 					<div class="mb-3">
 						<label for="fot" class="negrita">Selecciona una imagen:</label> 
 						<div>
-							<input name="foto" type="file" id="fot">
+							<input name="foto" type="file" id="foto">
 							<br>
 							<br>
  
@@ -37,7 +37,8 @@
  
 								<span>Imagen Actual: </span>
 								<br>
-								<img src="../../../uploads/{{ $incidencies->foto }}" width="200" class="img-fluid">
+								
+								<img src="../../../uploads/{{ $incidencies->foto }}" class="img-fluid" width="20%"> 
  
 							@else
  

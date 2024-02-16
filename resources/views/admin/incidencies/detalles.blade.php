@@ -18,7 +18,7 @@
    <p class="h6 mb-3">{{ $incidencies->descripcio }}</p> 
 
    <p class="h5">Imagen:</p>
-   <img src="../../../uploads/{{ $incidencies->img }}" class="img-fluid" width="20%">                    
+   <img src="../../../uploads/{{ $incidencies->foto }}" class="img-fluid" width="20%">                    
 
 </div>
 
