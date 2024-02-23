@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('',[IncidenciaController::class,'index'])->name('admin.incidencies.index');
 
-Route::resource('users','UserController');   
+Route::resource('users','UserController')->names('admin.users');   
 
 
 Route::resource('categories',[IncidenciaController::class])->names('admin.incidencies');
