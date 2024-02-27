@@ -17,7 +17,9 @@
         </x-slot>
 
         <div class="container mt-4">
-            <a href="{{ route('admin/incidencies/crear') }}" class="btn btn-primary mb-3">Crear</a>
+           
+                <a href="{{ route('admin/incidencies/crear') }}" class="btn btn-primary mb-3">Crear</a>
+           
 
             <table class="table table-striped table-bordered table-hover">
                 <thead>
@@ -39,17 +41,32 @@
                             <img src="{{ asset("uploads/$ins->foto") }}" width="30" class="img-responsive" alt="Foto">
                         </td>
                         <td class="v-align-middle">
-                            <form action="{{ route('admin/incidencies/eliminar', $ins->id) }}" method="POST"
-                                class="form-inline" role="form" onsubmit="return confirmarEliminar()">
-                                @csrf
+                            @if(Auth::user()->hasRole('admin'))
+                                <!-- Botones para el rol admin -->
+                                <form action="{{ route('admin/incidencies/eliminar', $ins->id) }}" method="POST"
+                                    class="form-inline" role="form" onsubmit="return confirmarEliminar()">
+                                    @csrf
+                                    <a href="{{ route('admin/incidencies/detalles', $ins->id) }}"
+                                        class="btn btn-dark mr-1">Detalles</a>
+                                    <a href="{{ route('admin/incidencies/actualizar', $ins->id) }}"
+                                        class="btn btn-primary mr-1">Editar</a>
+                                    <button type="submit" class="btn btn-danger mr-1">Eliminar</button>
+                                    <a href="https://wa.me/+34695449935?text="
+                                        class="btn btn-outline-warning">WhatsApp</a>
+                                </form>
+                            @elseif(Auth::user()->hasRole('secretaria'))
+                                <!-- Botones para el rol secretaria -->
                                 <a href="{{ route('admin/incidencies/detalles', $ins->id) }}"
                                     class="btn btn-dark mr-1">Detalles</a>
                                 <a href="{{ route('admin/incidencies/actualizar', $ins->id) }}"
                                     class="btn btn-primary mr-1">Editar</a>
-                                <button type="submit" class="btn btn-danger mr-1">Eliminar</button>
-                                <a href="https://wa.me/+34695449935?text="
-                                    class="btn btn-outline-warning">WhatsApp</a>
-                            </form>
+                                <!-- Omitir los botones de eliminar y WhatsApp -->
+                            @else
+                                <!-- Botones para otros roles (user, etc.) -->
+                                <a href="{{ route('admin/incidencies/detalles', $ins->id) }}"
+                                    class="btn btn-dark mr-1">Detalles</a>
+
+                            @endif
                         </td>
                     </tr>
                     @endforeach
@@ -57,7 +74,6 @@
             </table>
         </div>
 
-        
         <script type="text/javascript">
             function confirmarEliminar() {
                 return confirm("¿Estás seguro de eliminar?");
