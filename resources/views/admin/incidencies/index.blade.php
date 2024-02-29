@@ -17,7 +17,6 @@
         </x-slot>
 
         <div class="container mt-4">
-           
             @if(Auth::user()->hasRole('professor'))
                 <!-- Contenido para el rol de professor -->
                 <p>Los profesores no tienen permisos para ver incidencias.</p>
@@ -46,7 +45,7 @@
                                 <img src="{{ asset("uploads/$ins->foto") }}" width="30" class="img-responsive" alt="Foto">
                             </td>
                             <td class="v-align-middle">
-                                @if(Auth::user()->role_id(1))
+                                @if(Auth::user()->hasRole('admin'))
                                     <!-- Botones para el rol admin -->
                                     <form action="{{ route('admin/incidencies/eliminar', $ins->id) }}" method="POST"
                                         class="form-inline" role="form" onsubmit="return confirmarEliminar()">
@@ -59,7 +58,8 @@
                                         <a href="https://wa.me/+34695449935?text="
                                             class="btn btn-outline-warning">WhatsApp</a>
                                     </form>
-                                    @elseif(Auth::user()->role_id(3))
+                                @endif
+                                @if(Auth::user()->hasRole('secretaria'))
                                     <!-- Botones para el rol secretaria -->
                                     <a href="{{ route('admin/incidencies/detalles', $ins->id) }}"
                                         class="btn btn-dark mr-1">Detalles</a>

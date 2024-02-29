@@ -46,20 +46,15 @@ class User extends Authenticatable
     /**
      * Assign roles to users.
      */
-    public static function assignRolesToUsers()
+    public function hasRole($role)
     {
-        // Asignar el rol de Administrador (asumiendo que existe) al usuario con ID 1
-        $user1 = User::find(1);
-        $user1->assignRole('admin');
+        return $this->roles->contains('admin', $role);
+        return $this->roles->contains('secretaria', $role);
+        return $this->roles->contains('professor', $role);
 
-        // Asignar el rol de Profesor al usuario con ID 2
-        $user2 = User::find(2);
-        $user2->assignRole('professor');
 
-        // Asignar el rol de Secretaria al usuario con ID 3
-        $user3 = User::find(3);
-        $user3->assignRole('secretary');
     }
+    
     
     // Puedes agregar más métodos y funcionalidades según tus necesidades
 }
