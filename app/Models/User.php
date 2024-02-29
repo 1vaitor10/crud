@@ -46,15 +46,7 @@ class User extends Authenticatable
     /**
      * Assign roles to users.
      */
-    public function hasRole($role)
-    {
-        return $this->roles->contains('admin', $role);
-        return $this->roles->contains('secretaria', $role);
-        return $this->roles->contains('professor', $role);
-
-
-    }
-    
+   
     
     // Puedes agregar más métodos y funcionalidades según tus necesidades
 }
