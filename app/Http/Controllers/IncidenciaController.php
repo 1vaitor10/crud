@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 
 
 
@@ -22,21 +21,15 @@ class IncidenciaController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $incidencies = [];
-
-        // Si el usuario es administrador o secretaria, obtén todas las incidencias
-        if ($user->is_admin || $user->is_secretaria) {
-            $incidencies = Incidencia::all();
-        } 
-        // Si el usuario es profesor, obtén solo sus incidencias
-        elseif ($user->is_profesor) {
-            $incidencies = Incidencia::where('user_id', $user->id)->get();
-        }
-
+        $incidencies = Incidencia::all();
         return view('admin.incidencies.index', compact('incidencies'));
     }
-
+    // Crear un Registro (Create) 
+    public function crear()
+    {
+        $incidencies = Incidencia::all();
+        return view('admin.incidencies.crear', compact('incidencies'));
+    }
 
     public function store(StoreIncidenciaRequest $request)
     {

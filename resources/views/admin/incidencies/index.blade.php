@@ -51,6 +51,8 @@
                                     <button type="submit" class="btn btn-danger mr-1">Eliminar</button>
                                     <a href="https://wa.me/+34695449935?text="
                                         class="btn btn-outline-warning" target="_blank">WhatsApp</a>
+                                          <a href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+                                        class="btn btn-outline-warning" target="_blank">Gmail</a>
                                 </form>
                             @elseif(Auth::user()->hasRole('secretaria'))
                                 <!-- Botones para el rol secretaria -->
