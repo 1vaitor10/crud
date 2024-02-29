@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -44,4 +42,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Assign roles to users.
+     */
+    public static function assignRolesToUsers()
+    {
+        // Asignar el rol de Administrador (asumiendo que existe) al usuario con ID 1
+        $user1 = User::find(1);
+        $user1->assignRole('admin');
+
+        // Asignar el rol de Profesor al usuario con ID 2
+        $user2 = User::find(2);
+        $user2->assignRole('professor');
+
+        // Asignar el rol de Secretaria al usuario con ID 3
+        $user3 = User::find(3);
+        $user3->assignRole('secretary');
+    }
+    
+    // Puedes agregar más métodos y funcionalidades según tus necesidades
 }
